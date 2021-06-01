@@ -352,17 +352,6 @@ namespace ChallengeTest
             ix = 0;
             foreach (var pair in BlobIO.ToBlobList(bio))
                 Assert.Equal(--ix, pair.Key);
-
-            PermissionSet expectedPermissionSet = new PermissionSet();
-            expectedPermissionSet.SetPermissions();
-
-            PermissionSet permissionSet = new PermissionSet();
-            permissionSet.SetPermissions();
-
-            byte[] serializedPermissionSet = ByteSerialization.Serialize<PermissionSet>(permissionSet);
-            PermissionSet deserializedPermissionSet = ByteSerialization.Deserialize<PermissionSet>(serializedPermissionSet);
-
-            Assert.True(CollectionEx.ArrayEquals(deserializedPermissionSet.UserPermissions, expectedPermissionSet.UserPermissions));
         }
     }
 }
