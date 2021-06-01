@@ -1,4 +1,5 @@
-﻿using AE.CoreUtility;
+﻿using AE.CoreInterface;
+using AE.CoreUtility;
 using System;
 using System.Linq;
 using System.Text;
@@ -352,6 +353,19 @@ namespace ChallengeTest
             ix = 0;
             foreach (var pair in BlobIO.ToBlobList(bio))
                 Assert.Equal(--ix, pair.Key);
+
+            PermissionSet expectedPermissionSet = new PermissionSet();
+            expectedPermissionSet.SetPermissions();
+
+            PermissionSet permissionSet = new PermissionSet();
+            permissionSet.SetPermissions();
+
+            byte[] serialized = permissionSet.UserPermissions.ToList().SelectMany(up => BinaryEx.GetBytes(up)).ToArray();
+            bool[] deserialized = new bool[100];
+            for (int index = 0; index < serialized.Length; index++)
+                deserialized[index] = BinaryEx.ToBoolean(serialized, index);
+
+            Assert.True(CollectionEx.ArrayEquals(deserialized, expectedPermissionSet.UserPermissions));
         }
     }
 }
