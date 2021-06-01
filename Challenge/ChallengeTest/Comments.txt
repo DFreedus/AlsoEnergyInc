@@ -1,0 +1,20 @@
+﻿Concept or element that was unfamiliar or unexpected
+	Implicit and Explicit - BlobIO.cs lines 53-54
+		First time seeing these keywords in action.
+	Unchecked - BinaryEx.cs line 31
+		Unfamiliar with unchecked/checked keywords. Googled uses and examples.
+
+Constructive review or recommended improvement
+	The formatting on a lot of the methods seemed hard to follow.
+		Reformatting to one statement per line, aside from simple "if (x) return;" 
+	
+	Code comments
+		Sections of code commented out. Seemed some were to keep the code challenge lightweight
+		and avoid having to include too many classes (ReflectEx). Others didn't have context to 
+		explain the change, or why they were left in.
+
+Opportunity or future enhancement
+	Organizing classes (BlobIO.cs)
+		Creating regions and organizing classes.
+		Grouping methods by access modifiers and functionality 
+		might make opportunities for optimization more apparent.
